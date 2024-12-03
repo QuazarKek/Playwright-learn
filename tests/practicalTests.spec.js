@@ -9,9 +9,9 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
   });
 
-test.afterAll(async ({ page }) => {
-    await page.close();
-});
+// test.afterAll(async ({ page }) => {
+//     await page.close();
+// });
 
 test('Task 1: login with locked user', {tag: '@loginFlow'}, async ({ page }) => {
     const loginPage = new elements.LoginPage(page);
