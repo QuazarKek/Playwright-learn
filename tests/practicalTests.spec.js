@@ -1,12 +1,14 @@
 import * as elements from './DOM/elements';
 
 const { test, expect } = require('@playwright/test');
-const lockedUser = 'locked_out_user';
-const standardUser = 'standard_user';
-const pass = 'secret_sauce';
+const lockedUser = process.env.USER_NAME_LOCKED;
+const standardUser = process.env.USER_NAME_STANDARD;
+const pass = process.env.PASSWORD;
+const baseURL= process.env.BASEURL;
+
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('https://www.saucedemo.com/');
+    await page.goto(baseURL);
   });
 
 // test.afterAll(async ({ page }) => {
