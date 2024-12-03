@@ -28,15 +28,15 @@ export class ProductsPage{
         this.cartBtn = page.locator('[class="shopping_cart_link"]');
     }
 
-    async GetInnerTextArray(elementsArray){
-        const newList = [];
-        const elementsCount = await elementsArray.count();
-        for (let i = 0; i < elementsCount; i++) {
-            const innerText = await elementsArray.nth(i).innerText();
-            newList.push(innerText.trim());
-        }
-        return newList;
-    }
+    // async GetInnerTextArray(elementsArray){
+    //     const newList = [];
+    //     const elementsCount = await elementsArray.count();
+    //     for (let i = 0; i < elementsCount; i++) {
+    //         const innerText = await elementsArray.nth(i).innerText();
+    //         newList.push(innerText.trim());
+    //     }
+    //     return newList;
+    // }
 
     async GetInnerTextArrayAsNumbers(elementsArray){
         const newArray = [];

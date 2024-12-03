@@ -5,9 +5,15 @@ const lockedUser = 'locked_out_user';
 const standardUser = 'standard_user';
 const pass = 'secret_sauce';
 
-test('Task 1: login with locked user', async ({ page }) => {
+test.beforeEach(async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
+  });
 
+test.afterAll(async ({ page }) => {
+    await page.close();
+});
+
+test('Task 1: login with locked user', {tag: '@loginFlow'}, async ({ page }) => {
     const loginPage = new elements.LoginPage(page);
 
     await loginPage.userNameInput.fill(lockedUser);
@@ -23,8 +29,6 @@ test('Task 1: login with locked user', async ({ page }) => {
 });
 
 test('Task 2: login with standard user', async ({ page }) => {
-    await page.goto('https://www.saucedemo.com/');
-
     const productNumber = "3";
     const loginPage = new elements.LoginPage(page);
     const productPage = new elements.ProductsPage(page);
