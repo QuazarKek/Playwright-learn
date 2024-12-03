@@ -80,3 +80,23 @@ test('Task 2: login with standard user', async ({ page }) => {
 
     await expect(completePage.image).toBeVisible();
 });
+
+[
+    { productNumber: '6', nameOfProduct: 'Test.allTheThings() T-Shirt (Red)' },
+    { productNumber: '4', nameOfProduct: 'Sauce Labs Fleece Jacket' },
+    { productNumber: '2', nameOfProduct: 'Sauce Labs Bike Light' },
+].forEach(({ productNumber, nameOfProduct }) => {
+    test(`Task 3: parametrized test for ${nameOfProduct}`, async ({ page }) => {
+        const loginPage = new elements.LoginPage(page);
+        const productPage = new elements.ProductsPage(page);
+        const cartPage = new elements.CartPage(page);
+
+        loginPage.logIn(standardUser, pass);
+        const priceOfProductOnProductPage = await page.locator(productPage.ProductPriceLocator(productNumber)).innerText();
+
+        await productPage.AddToCartOrRemoveBtnClk(nameOfProduct);
+        await productPage.cartBtn.click()
+
+        expect(await cartPage.itemPrice.innerText()).toEqual(priceOfProductOnProductPage);
+    });
+});
