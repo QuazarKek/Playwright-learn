@@ -1,5 +1,6 @@
 import * as elements from './DOM/elements';
-
+import dotenv from 'dotenv';
+dotenv.config(); 
 const { test, expect } = require('@playwright/test');
 const lockedUser = process.env.USER_NAME_LOCKED;
 const standardUser = process.env.USER_NAME_STANDARD;
