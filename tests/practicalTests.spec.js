@@ -1,12 +1,16 @@
 import * as elements from './DOM/elements';
-import dotenv from 'dotenv';
-dotenv.config(); 
+import dotenv from "dotenv";
+dotenv.config({ path: `./.env`});
 const { test, expect } = require('@playwright/test');
+
+// const lockedUser = 'locked_out_user';
+// const standardUser = 'standard_user';
+// const pass = 'secret_sauce';
+// const baseURL = 'https://www.saucedemo.com/';
 const lockedUser = process.env.USER_NAME_LOCKED;
 const standardUser = process.env.USER_NAME_STANDARD;
 const pass = process.env.PASSWORD;
 const baseURL= process.env.BASEURL;
-
 
 test.beforeEach(async ({ page }) => {
     await page.goto(baseURL);
