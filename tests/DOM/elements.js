@@ -3,12 +3,12 @@ import { expect } from "@playwright/test";
 export class LoginPage{
     constructor(page){
         this.page = page;
-        this.userNameInput = page.locator('[data-test="username"]');
-        this.userPassInput = page.locator('[data-test="password"]');
-        this.loginBtn = page.locator('[data-test="login-button"]');
-        this.errorMessage = page.locator('[data-test="error"]');
+        this.userNameInput = page.getByPlaceholder('Username');
+        this.userPassInput = page.getByPlaceholder('Password');
+        this.loginBtn = page.getByText('Login');
+        this.errorMessage = page.getByText('Epic sadface: Sorry, this user has been locked out.');
         this.errorMessageBtn = page.locator('[data-test="error-button"]');
-        this.textLogo = page.locator('[class="login_logo"]');
+        this.textLogo = page.getByText('Swag Labs');
     }
 
     async logIn(name, pass){
