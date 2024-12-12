@@ -1,6 +1,3 @@
-import * as elements from './DOM/elements';
-import dotenv from "dotenv";
-dotenv.config({ path: `./.env`});
 const { test, expect } = require('@playwright/test');
 
 test("mocks a fruit and doesn't call api", async ({ page }) => {
